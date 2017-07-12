@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: php-starter
+spec:
+  replicas: 1
+  selector:
+    app: php-starter
+  template:
+    metadata:
+      name: php-starter
+      labels:
+        app: php-starter
+    spec:
+      containers:
+      - name: php-starter
+        image: gcr.io/{project}/php-starter:v1
+        ports:
+        - containerPort: 8080
+        env:
+        - name: "HELLO"
+          value: "world"
+
